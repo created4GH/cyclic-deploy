@@ -15,6 +15,7 @@ const login = async (req, res) => {
     if (isMatch) {
         const { username, password } = foundUser;
         setCookies(res, username, password);
+        console.log('isMatch correct')
         return res.status(200).json(foundUser);
     }
     else return unauthorizedRes();
