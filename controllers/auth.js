@@ -14,7 +14,7 @@ const login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, foundUser.password);
     if (isMatch) {
         const { username, password } = foundUser;
-        setCookies(res, { username, password });
+        setCookies(res, username, password);
         return res.status(200).json(foundUser);
     }
     else return unauthorizedRes();

@@ -10,7 +10,6 @@ const { logger } = require('./middleware/eventLogger');
 const errorHandler = require('./middleware/errorHandler');
 const connectDB = require('./config/connectDb');
 const verifyJWT = require('./middleware/verifyJWT');
-const verifyUserExists = require('./middleware/verifyUserExists');
 const PORT = process.env.PORT || 3500;
 
 connectDB();
@@ -29,11 +28,8 @@ app.use('/auth', require('./routes/auth'));
 
 app.use(verifyJWT);
 
-app.use('/auth/refresh', require('./routes/refresh'));
-
-app.use(verifyUserExists);
-
 app.use('/notes', require('./routes/api/notes'));
+app.use('/auth/refresh', require('./routes/refresh'));
 
 app.use(errorHandler);
 

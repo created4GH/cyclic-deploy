@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 
-const setCookies = (res, user) => {
+const setCookies = (res, username, password) => {
     const token = jwt.sign(
-        user,
+        { username, password },
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: '30m' }
     );
