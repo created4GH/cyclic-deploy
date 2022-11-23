@@ -1,8 +1,10 @@
 const jwt = require('jsonwebtoken');
 
 const verifyJWT = (req, res, next) => {
+    console.log('verifyJWT')
     const token = req.cookies?.jwt;
     try {
+        console.log('token', token)
         const user = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
         req.user = user;
         next();
