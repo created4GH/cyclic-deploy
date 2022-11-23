@@ -7,6 +7,7 @@ const getNotes = async (req, res) => {
     const { username } = req.user;
     const user = await User.findOne({ username }).lean();
     const notes = user?.notes;
+    console.log('get notes', notes)
     res.status(200).json(notes);
 };
 
