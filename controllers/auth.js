@@ -12,7 +12,6 @@ const login = async (req, res) => {
     const foundUser = await User.findOne({ username }).lean();
     if (!foundUser) return unauthorizedRes();
     const isMatch = await bcrypt.compare(password, foundUser.password);
-    console.log('isMatch correct', isMatch)
     if (isMatch) {
         const { username, password } = foundUser;
         setCookies(res, username, password);
