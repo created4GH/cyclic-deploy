@@ -12,7 +12,7 @@ const connectDB = require('./config/connectDb');
 const verifyJWT = require('./middleware/verifyJWT');
 const PORT = process.env.PORT || 3500;
 
-// connectDB();
+connectDB();
 
 app.use(logger);
 
